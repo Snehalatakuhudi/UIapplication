@@ -1,0 +1,23 @@
+<div class="container">
+
+<table class="table">
+  <thead>
+  <th>Name</th>
+  <th>Email</th>
+  <th>Age</th>
+  <th>DOB</th>
+  <th>Location</th>
+  <th>Action</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of _getUsersList">
+      <td>{{item.Name}}</td>
+      <td>{{item.Email}}</td>
+      <td>{{item.Age}}</td>
+      <td>{{item.DOB | date: 'dd/MM/yyyy'}}</td>
+      <td>{{item.Location}}</td>
+      <td><a class="btn">Edit</a> <a class="btn" (click)="DeleterUser(item.UserId)">delete</a></td>
+    </tr>
+  </tbody>
+</table> 
+</div>

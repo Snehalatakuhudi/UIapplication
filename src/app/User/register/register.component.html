@@ -1,0 +1,80 @@
+<div class="signup-form">
+  <form [formGroup]="RegisterForm">
+    <h2>Register</h2>
+    <p class="hint-text">Create your account. It's free and only takes a minute.</p>
+    <div class="form-group"> 
+          <input type="text" class="form-control" name="name" placeholder="Name"
+            formControlName="name"  [(ngModel)]="userRegister.Name">
+          <div *ngIf="RegForm">
+            <p class="errMsg"
+              *ngIf="RegisterForm.controls.name.hasError('required') && !RegisterForm.controls.name.valid">
+              Name is required
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="Email" name="email_Value"
+              formControlName="emailCtrl" [(ngModel)]="userRegister.Email" [email]>
+            <div *ngIf="RegForm">
+              <p class="errMsg"
+                *ngIf="RegisterForm.controls.emailCtrl.hasError('required') && !RegisterForm.controls.emailCtrl.valid">
+                Email is required
+              </p>
+              <p class="errMsg"
+                *ngIf="RegisterForm.controls.emailCtrl.hasError('email') && !RegisterForm.controls.emailCtrl.valid">
+                Email is not in correct format
+              </p>
+            </div>
+          </div>
+          <div class="form-group">
+              <input type="password" class="form-control" name="password" placeholder="Password" name="pwd_Value"
+                formControlName="pwdCtrl"  [(ngModel)]="userRegister.Password">
+              <div *ngIf="RegForm">
+                <p class="errMsg"
+                  *ngIf="RegisterForm.controls.pwdCtrl.hasError('required') && !RegisterForm.controls.pwdCtrl.valid">
+                  Password is required
+                </p>
+              </div>
+            </div>         
+        <div class="form-group">
+            <input type="text" class="form-control" name="age" placeholder="Age"
+              formControlName="age" [(ngModel)]="userRegister.Age">
+            <div *ngIf="RegForm">
+              <p class="errMsg"
+                *ngIf="RegisterForm.controls.age.hasError('required') && !RegisterForm.controls.age.valid">
+                Age is required
+              </p>
+            </div>
+          </div>
+      
+    <div class="form-group">
+      <input type="text" class="form-control" name="dob" placeholder="Date Of Birth" name="DOB_Value"
+        formControlName="dobCtrl" [(ngModel)]="userRegister.Dob">
+      <div *ngIf="RegForm">
+        <p class="errMsg"
+          *ngIf="RegisterForm.controls.dobCtrl.hasError('required') && !RegisterForm.controls.dobCtrl.valid">
+          Date Of Birth is required
+        </p>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" name="location" placeholder="Location" name="location"
+        formControlName="location" [(ngModel)]="userRegister.Location">
+      <div *ngIf="RegForm">
+        <p class="errMsg"
+          *ngIf="RegisterForm.controls.location.hasError('required') && !RegisterForm.controls.location.valid">
+          Location is required
+        </p>
+      </div>
+    </div>
+<div class="form-group" *ngIf="successMsg">
+  <h4 class="alert alert-success">"You have successfully registered"</h4>
+</div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="SubmitRegisterForm()">Register
+        Now</button>
+    </div>
+  </form>
+  <div class="text-center ">Already have an account? <a [routerLink]="['/login']">Sign In</a></div>
+</div>

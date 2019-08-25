@@ -1,0 +1,17 @@
+<div class='container-fluid'>
+  <div class='row'>
+    <div>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav navbar-right">
+            <li *ngIf="!IsLogin"><a [routerLink]="['/register']"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li *ngIf="IsLogin"><a [routerLink]="['/']"  (click)="logOut()"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

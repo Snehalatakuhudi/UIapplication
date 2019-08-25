@@ -1,0 +1,95 @@
+<div class="signup-form">
+  <form>
+    <div class="card-body">
+      <h5 class="card-title text-center">User Information</h5>
+      <div class="card-text">
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <td>Name</td>
+              <td><span *ngIf="!isEdit">{{_userProfile.Name}}</span>
+              <input type="text" *ngIf="isEdit" [(ngModel)]="_userProfile.Name" name="Name">
+              </td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td><span *ngIf="!isEdit">{{_userProfile.Email}}</span>
+                <input type="text" *ngIf="isEdit" [(ngModel)]="_userProfile.Email" readonly name="Email"></td>
+            </tr>
+            <tr>
+              <td>Date Of Birth</td>
+              <td><span *ngIf="!isEdit">{{_userProfile.DOB | date: 'dd/MM/yyyy'}}</span>
+                <input type="text" *ngIf="isEdit" [(ngModel)]="_userProfile.DOB" name="DOB"></td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td><span *ngIf="!isEdit">{{_userProfile.Age}}</span>
+                  <input type="text" *ngIf="isEdit" [(ngModel)]="_userProfile.Age" name="Age"></td>
+              </tr>
+            <tr>
+              <td>Location</td>
+              <td><span *ngIf="!isEdit">{{_userProfile.Location}}</span>
+               <input type="text" *ngIf="isEdit" [(ngModel)]="_userProfile.Location" name="Location"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <span class="pull-right">
+          <button *ngIf="!isEdit" class="btn btn-sm btn-warning" type="button" data-toggle="tooltip"
+            data-original-title="Edit this user" (click)="EditUser()"><i class="glyphicon glyphicon-edit"></i> Edit Profile</button>
+            <button  *ngIf="isEdit"  class="btn btn-sm btn-warning" type="button" data-toggle="tooltip"
+            (click)="UpdateUser()"><i class="glyphicon glyphicon-edit"></i> Update</button>
+        
+          </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <a (click)="ChangeAddSkill()">add Skill</a>
+      </div>
+      <div class="col-md-12" *ngIf="isAddSkills">
+
+          <div class="form-group col-md-3"> 
+                <input type="text" class="form-control" name="skill" placeholder="Skill Name"
+                  [(ngModel)]="userSkills.Skill">
+           </div>
+              <div class="form-group col-md-3">
+                  <input type="email" class="form-control" name="experience" placeholder="Experience" 
+                   [(ngModel)]="userSkills.Experience" [email]>
+                </div>
+      
+                <div class="form-group col-md-3">
+                    <input type="text" class="form-control" name="certification" placeholder="Certification"
+                      [(ngModel)]="userSkills.Certification">
+                  </div>         
+           
+          <div class="col-md-2 pull-left">
+            <button type="submit" class="btn btn-primary" (click)="AddUserSkill()">Add</button>
+          </div>
+      
+        </div>
+        <div class="form-group col-md-12" *ngIf="successMsg">
+            <h4 class="alert alert-success">"skill added successfully..."</h4>
+        </div>
+
+        <div class="col-md-12">
+            <h4> Skills List {{_userProfile.userSkills.length}}</h4>
+            <table class="table" *ngIf="_userProfile.userSkills.length >0">
+              <thead><th>Skill</th><th>Experience</th><th>Certification</th></thead>
+              <tbody>
+                <tr *ngFor="let item of _userProfile.userSkills">
+                  <td>{{item.Skill}}</td>
+                  <td>{{item.Experience}}</td>
+                  <td>{{item.Certification}}</td>
+                  <td><span class="hide">{{item.id}}</span></td>
+               </tr>
+            </tbody>
+            </table>
+            <h4 class="text-center"  *ngIf="_userProfile.userSkills.length ==0"> no skill listed...</h4>
+        </div>
+
+    </div>
+   
+  </form>
+</div>
