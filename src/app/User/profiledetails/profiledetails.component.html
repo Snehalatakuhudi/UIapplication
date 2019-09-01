@@ -20,12 +20,7 @@
               <td>Date Of Birth</td>
               <td><span *ngIf="!isEdit">{{_userProfile.DOB | date: 'dd/MM/yyyy'}}</span>
                 <input type="text" *ngIf="isEdit" [(ngModel)]="_userProfile.DOB" name="DOB"></td>
-            </tr>
-            <tr>
-                <td>Age</td>
-                <td><span *ngIf="!isEdit">{{_userProfile.Age}}</span>
-                  <input type="text" *ngIf="isEdit" [(ngModel)]="_userProfile.Age" name="Age"></td>
-              </tr>
+            </tr> 
             <tr>
               <td>Location</td>
               <td><span *ngIf="!isEdit">{{_userProfile.Location}}</span>
