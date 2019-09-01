@@ -21,8 +21,7 @@ export class RegisterComponent implements OnInit {
   }
 
   RegisterForm: FormGroup = new FormGroup({
-    name: new FormControl(null, [Validators.required]),
-    age: new FormControl(null, [Validators.required]),
+    name: new FormControl(null, [Validators.required]), 
     dobCtrl: new FormControl(null, [Validators.required]),
     location: new FormControl(null, [Validators.required]),
     emailCtrl: new FormControl(null, [Validators.required, Validators.email]),
